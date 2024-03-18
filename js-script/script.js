@@ -92,13 +92,25 @@ elButton.addEventListener('click', function(){
                 if (bombs.includes(i + 1)) {
                     square.classList.add('bg-danger');
                     console.log(`Hai cliccato la cella numero: ${i + 1}, che sfiga c'è una bomba!`);
-                } else {
-                    //far si che scriva in basso il punteggio(vedi commento sotto)
+
+                    //visualizzo tutte le altre bombe
+                    const allSquares = document.querySelectorAll('.box');
+                    for (let x = 0; x < bombs.length; x++) {
+                        let bomb = bombs[x];
+                        if (allSquares[bomb - 1]) {
+                        allSquares[bomb - 1].classList.add('bg-danger');
+                        }
+                    }
+
+
+                } else if (!bombs.includes(i + 1)) {
+                //far si che scriva in basso il punteggio(vedi commento sotto)
                     square.classList.add('bg-success');
                     console.log(`Hai cliccato la cella numero: ${i + 1}`);
                 }
             }); 
         }
+        
 
         //okei, ora dobbiamo far si che se user schiaccia casella con bomba --- game over(con punteggio precedente scritto), se no 
         // aggiunge in basso il punteggio in base alle caselle giuste gia cliccate!
