@@ -56,15 +56,6 @@ elButton.addEventListener('click', function(){
         }
 
         
-        for ( let i = 0; i < n; i++) {
-            const square = generateSquare(i + 1)
-            elBigSquare.appendChild(square);
-
-            square.addEventListener('click', function(){
-                square.classList.add('bg-success');
-                console.log(`Hai cliccato la cella numero: ${i + 1}`);
-            }); 
-        }
 
         // voglio generare 16 square casuali che gia esistono che colorero di rosso!
         const bombs = [];   //contiene numeri da 1 a 100 (max 16), non puo avere numeri uguali, deve sostituire i numeri i bg rosso ai numeri degli square
@@ -89,9 +80,24 @@ elButton.addEventListener('click', function(){
             let bomb = generateUniqueRandomNumber (1, 100, bombs);
             bombs.push(bomb);
         }
-        console.log(generateUniqueRandomNumber(1, 100, bombs));
         console.log(bombs);
 
+        //ok abbiamo generato le 16 bombe, adeso dobbiamo metterle "dentro gli square e far si che si colorino di rosso"
+        
+        for ( let i = 0; i < n; i++) {
+            const square = generateSquare(i + 1);
+            elBigSquare.appendChild(square);
+
+            square.addEventListener('click', function(){
+                if (bombs.includes(i + 1)) {
+                    square.classList.add('bg-danger');
+                    console.log(`Hai cliccato la cella numero: ${i + 1}, sfiga c'è una bomba!`);
+                } else {
+                    square.classList.add('bg-success');
+                    console.log(`Hai cliccato la cella numero: ${i + 1}`);
+                }
+            }); 
+        }
         newGame = true;
     }
 });
