@@ -82,16 +82,25 @@ elButton.addEventListener('click', function(){
         }
         console.log(bombs);
 
+        //prova
+        let isClicked = false;
+
         //ok abbiamo generato le 16 bombe, adeso dobbiamo metterle "dentro gli square e far si che si colorino di rosso"
         for ( let i = 0; i < n; i++) {
             const square = generateSquare(i + 1);
             elBigSquare.appendChild(square);
 
             square.addEventListener('click', function(){
+                //prova
+                if (isClicked) {
+                    return;
+                }
                 //trovare un modo per far si che se clicco su una bomba mi visualizzi tutte le altre e fermi il gioco!
                 if (bombs.includes(i + 1)) {
                     square.classList.add('bg-danger');
                     console.log(`Hai cliccato la cella numero: ${i + 1}, che sfiga c'è una bomba!`);
+                    isClicked = true;
+            
 
                     //visualizzo tutte le altre bombe
                     const allSquares = document.querySelectorAll('.box');
@@ -103,7 +112,10 @@ elButton.addEventListener('click', function(){
                     }
 
 
-                } else if (!bombs.includes(i + 1)) {
+                    //come si ferma il gioco?? proviamo con una
+
+
+                } else {
                 //far si che scriva in basso il punteggio(vedi commento sotto)
                     square.classList.add('bg-success');
                     console.log(`Hai cliccato la cella numero: ${i + 1}`);
