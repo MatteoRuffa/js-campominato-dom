@@ -55,11 +55,20 @@ elButton.addEventListener('click', function(){
             document.documentElement.style.setProperty('--square-size', 'calc(100% / 7)');
         }
 
-        // voglio generare 16 square casuali che gia esistono che colorero di rosso!
-        const bombs = [];   //contiene numeri da 1 a 100 (max 16), non puo avere numeri uguali, 
-                            //deve sostituire i numeri i bg rosso ai numeri degli square
         
-                        
+        for ( let i = 0; i < n; i++) {
+            const square = generateSquare(i + 1)
+            elBigSquare.appendChild(square);
+
+            square.addEventListener('click', function(){
+                square.classList.add('bg-success');
+                console.log(`Hai cliccato la cella numero: ${i + 1}`);
+            }); 
+        }
+
+        // voglio generare 16 square casuali che gia esistono che colorero di rosso!
+        const bombs = [];   //contiene numeri da 1 a 100 (max 16), non puo avere numeri uguali, deve sostituire i numeri i bg rosso ai numeri degli square
+        
         // genwro una funzione per creare numeri casuali che successivamente mettero con un cilco dentro bombs 
         function generateUniqueRandomNumber(min, max, bombs) {
             let isFound = false;
@@ -68,25 +77,21 @@ elButton.addEventListener('click', function(){
             while( !isFound) {
             randomNumber =  getRndInteger(min, max)
                             
-            if (bombs.includes(randomNumber) === false) {
-                isFound = true;
-            }
+                if (bombs.includes(randomNumber) === false) {
+                    isFound = true;
+                }
             }
             return randomNumber;
         }
-        console.log( generateUniqueRandomNumber (1, 100, bombs));
 
-        for ( let i = 0; i < n; i++) {
-            const square = generateSquare(i + 1)
-            elBigSquare.appendChild(square);
-
-            square.addEventListener('click', function(){
-                square.classList.add('bg-success');
-                console.log(`Hai cliccato la cella numero: ${i + 1}`);
-
-
-            }); 
+        //faccio un ciclo per generae 16 bombe
+        for (let i = 1; i < 16; i++) {
+            let bomb = generateUniqueRandomNumber (1, 100, bombs);
+            bombs.push(bomb);
         }
+        console.log(generateUniqueRandomNumber(1, 100, bombs));
+        console.log(bombs);
+
         newGame = true;
     }
 });
