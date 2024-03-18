@@ -83,7 +83,6 @@ elButton.addEventListener('click', function(){
         console.log(bombs);
 
         //ok abbiamo generato le 16 bombe, adeso dobbiamo metterle "dentro gli square e far si che si colorino di rosso"
-        
         for ( let i = 0; i < n; i++) {
             const square = generateSquare(i + 1);
             elBigSquare.appendChild(square);
@@ -98,6 +97,10 @@ elButton.addEventListener('click', function(){
                 }
             }); 
         }
+
+        //okei, ora dobbiamo far si che se user schiccia casella con bomba --- game over(con punteggio precedente scritto), se no 
+        // aggiunge in basso il punteggio in base di caselle giuste gia cliccate!
+        //inciso[cercare un modo per far si che user possa schiacciare una asella solo una volta!]
         newGame = true;
     }
 });
