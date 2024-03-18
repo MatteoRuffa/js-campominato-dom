@@ -130,7 +130,7 @@ elButton.addEventListener('click', function(){
                 console.log(score);
 
                 //a questo punto provo a creare un contenitore che mi stampi il risultato ogni volta
-                document.getElementById('show-score').innerHTML = `Il tuo risultato è: ${score}`;
+                document.getElementById('show-score').innerHTML = `Il tuo punteggio è: ${score} caselle`;
 
             }); 
         }
