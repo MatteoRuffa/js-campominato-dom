@@ -76,8 +76,8 @@ elButton.addEventListener('click', function(){
         }
 
         //faccio un ciclo per generae 16 bombe
-        for (let i = 1; i < 16; i++) {
-            let bomb = generateUniqueRandomNumber (1, 100, bombs);
+        for (let i = 0; i < 16; i++) {
+            let bomb = generateUniqueRandomNumber (1, n, bombs);
             bombs.push(bomb);
         }
         console.log(bombs);
