@@ -121,9 +121,6 @@ elButton.addEventListener('click', function(){
                 //far si che scriva in basso il punteggio(vedi commento sotto)
                     square.classList.add('bg-success', 'clicked');
                     console.log(`Hai cliccato la cella numero: ${i + 1}`);
-                    
-                    
-                    
                 }
             }); 
         }
@@ -132,6 +129,9 @@ elButton.addEventListener('click', function(){
         //okei, ora dobbiamo far si che se user schiaccia casella con bomba --- game over(con punteggio precedente scritto), se no 
         // aggiunge in basso il punteggio in base alle caselle giuste gia cliccate!
         //inciso[cercare un modo per far si che user possa schiacciare una casella solo una volta!]
+            //---!!!DONE!!!---
+        //ok adesso devo aggiungere il punteggio scritto in basso! (che si sommi ad ogni click e in caso di bomba scriva una cosa 
+        //differente con il punteggio fatto fino ad ora)
         newGame = true;
     }
 });
