@@ -97,17 +97,10 @@ elButton.addEventListener('click', function(){
                 }
                 //provo ad aggiungere un riconoscitore di classi per far si che se uno square e gia stato cliccato 
                 //(e quindi ha .clicked non si possa piu ricliccare)
-                 if (square.classList.contains('clicked')) {
+                if (square.classList.contains('clicked')) {
                      return;
-                 }
+                }
 
-                //provo a 'definire' numericmente tutti gli square con classe .clicked
-                let selectSquare = document.querySelectorAll('.clicked');
-                let score = selectSquare.length + 1;
-                console.log(selectSquare);
-                console.log(score);
-                
-                
                 //trovare un modo per far si che se clicco su una bomba mi visualizzi tutte le altre e fermi il gioco!
                 if (bombs.includes(i + 1)) {
                     square.classList.add('bg-danger');
@@ -129,6 +122,16 @@ elButton.addEventListener('click', function(){
                     square.classList.add('bg-success', 'clicked');
                     console.log(`Hai cliccato la cella numero: ${i + 1}`);
                 }
+
+                //provo a 'definire' numericmente tutti gli square con classe .clicked
+                let selectSquare = document.querySelectorAll('.clicked');
+                let score = selectSquare.length + 1;
+                console.log(selectSquare);
+                console.log(score);
+
+                //a questo punto provo a creare un contenitore che mi stampi il risultato ogni volta
+                document.getElementById('show-score').innerHTML = `Il tuo risultato è: ${score}`;
+
             }); 
         }
         
