@@ -131,7 +131,6 @@ elButton.addEventListener('click', function(){
 
                 //a questo punto provo a creare un contenitore che mi stampi il risultato ogni volta
                 document.getElementById('show-score').innerHTML = `Il tuo punteggio è: ${score} caselle`;
-
             }); 
         }
         
@@ -142,6 +141,7 @@ elButton.addEventListener('click', function(){
             //---!!!DONE!!!---
         //ok adesso devo aggiungere il punteggio scritto in basso! (che si sommi ad ogni click e in caso di bomba scriva una cosa 
         //differente con il punteggio fatto fino ad ora)
+            //---!!!DONE!!!---
         newGame = true;
     }
 });
