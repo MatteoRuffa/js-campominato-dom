@@ -37,7 +37,7 @@ elButton.addEventListener('click', function(){
         function generateSquare(content) {
             const newSquare = document.createElement('div');
             newSquare.classList.add('box');
-            newSquare.innerHTML = '<span>' + content + '</span>';
+            newSquare.innerHTML = '<span>' + content + '</span>'; //rimuovere in seguito(che non compaia di default il numero nella casella)
             return newSquare;
         }
         let difficulty = document.getElementById('diff').value;
@@ -55,6 +55,10 @@ elButton.addEventListener('click', function(){
             document.documentElement.style.setProperty('--square-size', 'calc(100% / 7)');
         }
 
+        // voglio generare 16 square casuali che gia esistono che colorero di rosso!
+        const bombs = [];   //contiene numeri da 1 a 100 (max 16), non puo avere numeri uguali, 
+                            //deve sostituire i numeri i bg rosso ai numeri degli square
+
         for ( let i = 0; i < n; i++) {
             const square = generateSquare(i + 1)
             elBigSquare.appendChild(square);
@@ -62,8 +66,9 @@ elButton.addEventListener('click', function(){
             square.addEventListener('click', function(){
                 square.classList.add('bg-success');
                 console.log(`Hai cliccato la cella numero: ${i + 1}`);
-                // voglio generare 16 square casuali che gia esistono che colorero di rosso!
-            });
+
+
+            }); 
         }
         newGame = true;
     }
