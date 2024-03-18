@@ -95,13 +95,18 @@ elButton.addEventListener('click', function(){
                 if (isClicked) {
                     return;
                 }
+                //provo ad aggiungere un riconoscitore di classi per far si che se uno square e gia stato cliccato 
+                //(e quindi ha .clicked non si possa piu ricliccare)
+                if (square.classList.contains('clicked')) {
+                    return;
+                }
+                
                 //trovare un modo per far si che se clicco su una bomba mi visualizzi tutte le altre e fermi il gioco!
                 if (bombs.includes(i + 1)) {
                     square.classList.add('bg-danger');
                     console.log(`Hai cliccato la cella numero: ${i + 1}, che sfiga c'è una bomba!`);
                     isClicked = true;
             
-
                     //visualizzo tutte le altre bombe
                     const allSquares = document.querySelectorAll('.box');
                     for (let x = 0; x < bombs.length; x++) {
@@ -112,13 +117,13 @@ elButton.addEventListener('click', function(){
                     }
 
 
-                    //come si ferma il gioco?? proviamo con una
-
-
                 } else {
                 //far si che scriva in basso il punteggio(vedi commento sotto)
-                    square.classList.add('bg-success');
+                    square.classList.add('bg-success', 'clicked');
                     console.log(`Hai cliccato la cella numero: ${i + 1}`);
+                    
+                    
+                    
                 }
             }); 
         }
