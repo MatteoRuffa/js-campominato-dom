@@ -88,19 +88,21 @@ elButton.addEventListener('click', function(){
             elBigSquare.appendChild(square);
 
             square.addEventListener('click', function(){
+                //trovare un modo per far si che se clicco su una bomba mi visualizzi tutte le altre e fermi il gioco!
                 if (bombs.includes(i + 1)) {
                     square.classList.add('bg-danger');
-                    console.log(`Hai cliccato la cella numero: ${i + 1}, sfiga c'è una bomba!`);
+                    console.log(`Hai cliccato la cella numero: ${i + 1}, che sfiga c'è una bomba!`);
                 } else {
+                    //far si che scriva in basso il punteggio(vedi commento sotto)
                     square.classList.add('bg-success');
                     console.log(`Hai cliccato la cella numero: ${i + 1}`);
                 }
             }); 
         }
 
-        //okei, ora dobbiamo far si che se user schiccia casella con bomba --- game over(con punteggio precedente scritto), se no 
-        // aggiunge in basso il punteggio in base di caselle giuste gia cliccate!
-        //inciso[cercare un modo per far si che user possa schiacciare una asella solo una volta!]
+        //okei, ora dobbiamo far si che se user schiaccia casella con bomba --- game over(con punteggio precedente scritto), se no 
+        // aggiunge in basso il punteggio in base alle caselle giuste gia cliccate!
+        //inciso[cercare un modo per far si che user possa schiacciare una casella solo una volta!]
         newGame = true;
     }
 });
