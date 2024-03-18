@@ -97,22 +97,15 @@ elButton.addEventListener('click', function(){
                 }
                 //provo ad aggiungere un riconoscitore di classi per far si che se uno square e gia stato cliccato 
                 //(e quindi ha .clicked non si possa piu ricliccare)
-                // if (square.classList.contains('clicked')) {
-                //     return;
-                // }
+                 if (square.classList.contains('clicked')) {
+                     return;
+                 }
 
                 //provo a 'definire' numericmente tutti gli square con classe .clicked
-                let selectSquareBoolean = square.classList.contains('clicked');
-                console.log(selectSquareBoolean);
-                // il rislultato e un var booleana, quindi cerco un modo di renderla numerica!
-                let selectSquare =  Number(selectSquareBoolean);
+                let selectSquare = document.querySelectorAll('.clicked');
+                let score = selectSquare.length + 1;
                 console.log(selectSquare);
-
-                if (selectSquare === 1) {
-                    let score;
-                    score += selectSquare;
-                    console.log(score);
-                }
+                console.log(score);
                 
                 
                 //trovare un modo per far si che se clicco su una bomba mi visualizzi tutte le altre e fermi il gioco!
