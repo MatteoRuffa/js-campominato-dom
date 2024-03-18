@@ -1,30 +1,28 @@
 /*
-Consegna
-L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-Ogni cella ha un numero progressivo, da 1 a 100.
-Ci saranno quindi 10 caselle per ognuna delle 10 righe.
-Quando l'utente clicca su ogni cella, la cella cliccata si colora di azzurro ed emetto un messaggio 
-in console con il numero della cella cliccata.
-Bonus
-Aggiungere una select accanto al bottone di generazione, che fornisca una scelta tra tre diversi 
-livelli di difficoltà:
-con difficoltà 1 => 100 caselle, con un numero compreso tra 1 e 100, divise in 10 caselle per 10 righe;
-con difficoltà 2 => 81 caselle, con un numero compreso tra 1 e 81, divise in 9 caselle per 9 righe;
-con difficoltà 3 => 49 caselle, con un numero compreso tra 1 e 49, divise in 7 caselle per 7 righe;
+Copiamo la griglia fatta ieri nella nuova repo e aggiungiamo la logica del gioco (attenzione: non bisogna 
+copiare tutta la cartella dell'esercizio ma solo l'index.html, e le cartelle js/ css/ con i relativi 
+script e fogli di stile, per evitare problemi con l'inizializzazione di git).
+
+Il computer deve generare 16 numeri casuali nello stesso range della difficoltà prescelta: le bombe. 
+Attenzione: **nella stessa cella può essere posizionata al massimo una bomba, perciò nell’array delle 
+bombe non potranno esserci due numeri uguali.
+
+In seguito l'utente clicca su una cella: se il numero è presente nella lista dei numeri generati - 
+abbiamo calpestato una bomba - la cella si colora di rosso e la partita termina. Altrimenti la cella 
+cliccata si colora di azzurro e l'utente può continuare a cliccare sulle altre celle.
+
+La partita termina quando il giocatore clicca su una bomba o quando raggiunge il numero massimo 
+possibile di numeri consentiti (ovvero quando ha rivelato tutte le celle che non sono bombe).
+Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che 
+l’utente ha cliccato su una cella che non era una bomba.
 */
-
-
-// L'utente clicca su un bottone che genererà una griglia di gioco quadrata.
-{/* <div class="big-box"></div> */}
 
 const elButton = document.querySelector('.btn');
 
-// creo un (o una) flag per 'resettare' il layout di gioco
 let newGame = false;
 
 elButton.addEventListener('click', function(){
 
-    // aggiungo un comando che se il bigbox esiste lo toglie e ricrea
     if (newGame) {
         const elBigSquare = document.querySelector('.big-box');
         if (elBigSquare) {
@@ -36,26 +34,19 @@ elButton.addEventListener('click', function(){
         elBigSquare.classList.add('big-box');
         document.querySelector('.container').appendChild(elBigSquare);
     
-        // genero 100 quadrati piu piccoli dentro il bigsquare
-            // genro una funzione per creare i quadrati
         function generateSquare(content) {
             const newSquare = document.createElement('div');
             newSquare.classList.add('box');
             newSquare.innerHTML = '<span>' + content + '</span>';
             return newSquare;
         }
-            // uso la funzione dentro un ciclo per definire il numero di quadrati che voglio
-            let difficulty = document.getElementById('diff').value;
-            console.log(difficulty);
+        let difficulty = document.getElementById('diff').value;
+        console.log(difficulty);
 
-        // creo la casistica delle tre difficolta con tre layout differenti e
-        // provo a provare setPropriety() per vedere se in css cambio la taglia ei quadrati
         let n;
         if (difficulty == 1) {
             n = 100;
             document.documentElement.style.setProperty('--square-size', 'calc(100% / 10)');
-            /*document= foglio html, .documentElement= proprietà oggetti document, .style= propietà 
-            per cambiare stile di un el, .setProperty()= metodo per impostare prop css per un el*/
         } else if (difficulty == 2) {
             n = 81;
             document.documentElement.style.setProperty('--square-size', 'calc(100% / 9)');
@@ -68,12 +59,10 @@ elButton.addEventListener('click', function(){
             const square = generateSquare(i + 1)
             elBigSquare.appendChild(square);
 
-            // Quando l'utente clicca su ogni cella....
             square.addEventListener('click', function(){
-                // la cella cliccata si colora di azzurro
-                square.classList.toggle('bg-success');
-                // ed emetto un messaggio in console con il numero della cella cliccata.
+                square.classList.add('bg-success');
                 console.log(`Hai cliccato la cella numero: ${i + 1}`);
+                // voglio generare 16 square casuali che gia esistono che colorero di rosso!
             });
         }
         newGame = true;
