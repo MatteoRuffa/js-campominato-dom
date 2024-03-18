@@ -58,6 +58,23 @@ elButton.addEventListener('click', function(){
         // voglio generare 16 square casuali che gia esistono che colorero di rosso!
         const bombs = [];   //contiene numeri da 1 a 100 (max 16), non puo avere numeri uguali, 
                             //deve sostituire i numeri i bg rosso ai numeri degli square
+        
+                        
+        // genwro una funzione per creare numeri casuali che successivamente mettero con un cilco dentro bombs 
+        function generateUniqueRandomNumber(min, max, bombs) {
+            let isFound = false;
+            let randomNumber;
+                            
+            while( !isFound) {
+            randomNumber =  getRndInteger(min, max)
+                            
+            if (bombs.includes(randomNumber) === false) {
+                isFound = true;
+            }
+            }
+            return randomNumber;
+        }
+        console.log( generateUniqueRandomNumber (1, 100, bombs));
 
         for ( let i = 0; i < n; i++) {
             const square = generateSquare(i + 1)
